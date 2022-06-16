@@ -17,7 +17,7 @@ if [ $SERVICE == payments ]; then
   java -jar /bin/spring-boot-payments.jar > /spring_boot.out 2>&1 &
   sleep 3
   echo "Registering the service..."
-  if [ consul services register /tmp/svc_payments.hcl ]; then
+  if [ "consul services register /tmp/svc_payments.hcl" ]; then
       if [ $SECONDARY == false ]; then 
          consul config write /tmp/payments.hcl
          consul config write /tmp/intention.hcl
@@ -50,7 +50,7 @@ if [ $SERVICE == public-api ]; then
    sleep 3
   ## The configuration resolver command is commented out for the Chaos engineering lab.
   ## Uncomment if not using the chaos engineering lab.
-   if [ consul services register /config/svc_public_api.hcl ]; then
+   if [ "consul services register /config/svc_public_api.hcl" ]; then
       consul config write /tmp/default-intentions.hcl
          if [ $SECONDARY == false ]; then 
             # consul config write /tmp/public-api.hcl
