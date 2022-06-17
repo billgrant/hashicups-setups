@@ -81,7 +81,7 @@ fi
 if [ $SERVICE == product-api ]; then
    echo "Starting the Product-API application..."
     if [ $SECONDARY == false ]; then
-         if [ consul services register /config/svc_product_api.hcl ]; then
+         if [ "consul services register /config/svc_product_api.hcl" ]; then
             nohup /bin/product-api > /api.out 2>&1 &
             consul config write /tmp/product-api.hcl
             consul config write /tmp/intention.hcl
