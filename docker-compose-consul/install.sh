@@ -132,7 +132,7 @@ sleep 5
       echo "Registering the service..."
       sleep 2
       echo "Populate table.."
-         if [ psql postgres://postgres:password@localhost:5432/products?sslmode=disable -f /docker-entrypoint-initdb.d/products.sql ]; then
+         if [ "psql postgres://postgres:password@localhost:5432/products?sslmode=disable -f /docker-entrypoint-initdb.d/products.sql" ]; then
                consul services register /tmp/svc_db.hcl
                consul config write /tmp/product-db.hcl
                consul config write /tmp/intention.hcl
